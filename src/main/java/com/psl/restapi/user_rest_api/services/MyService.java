@@ -15,8 +15,8 @@ import com.psl.restapi.user_rest_api.services.impl.MyServiceImpl;
 @WebApiServiceGen
 public interface MyService {
 
-  static MyService create(Vertx vertx) {
-    return new MyServiceImpl(vertx);
+  static MyService create(Vertx vertx,List<User> uList) {
+    return new MyServiceImpl(vertx,uList);
   }
 
   void getUsersList(

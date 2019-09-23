@@ -51,7 +51,16 @@ public class MainVerticle extends AbstractVerticle {
     this.serviceBinder = new ServiceBinder(vertx);
     this.registeredConsumers = new ArrayList<>();
 
-    MyService myService = MyService.create(vertx);
+    
+    List<User> userList = new ArrayList<User>();
+    int [] id = {101,102,103,104,105,106,107,108,109,110};
+    String [] name = {"Brett","Riva","Rick","Ariane","Angeles","Minna","Rema","Jama","Katherine","Noble"};
+    for(int i=0;i<10;i++)
+    {
+    	User user = new User(id[i],name[i]);
+    	userList.add(user);
+    }
+    MyService myService = MyService.create(vertx,userList);
     registeredConsumers.add(
       serviceBinder
         .setAddress("users_service.myapp")

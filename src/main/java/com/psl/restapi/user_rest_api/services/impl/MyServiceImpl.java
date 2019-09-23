@@ -19,8 +19,10 @@ public class MyServiceImpl implements MyService {
   private Vertx vertx;
   private List<User> userList = new ArrayList<User>();
 
-  public MyServiceImpl(Vertx vertx) {
+  public MyServiceImpl(Vertx vertx,List<User> uList) {
     this.vertx = vertx;
+    this.userList = uList;
+    
   }
 
   @Override

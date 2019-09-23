@@ -6,12 +6,14 @@ import io.vertx.ext.unit.TestContext;
 import io.vertx.ext.unit.junit.RunTestOnContext;
 import io.vertx.ext.unit.junit.VertxUnitRunner;
 import io.vertx.ext.web.api.*;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -31,7 +33,17 @@ public class MyServiceTest {
   @Before
   public void before(TestContext context) {
     Vertx vertx = rule.vertx();
-    myService = MyService.create(vertx);
+    
+
+    List<User> userList = new ArrayList<User>();
+    int [] id = {101,102,103,104,105,106,107,108,109,110};
+    String [] name = {"Brett","Riva","Rick","Ariane","Angeles","Minna","Rema","Jama","Katherine","Noble"};
+    for(int i=0;i<10;i++)
+    {
+    	User user = new User(id[i],name[i]);
+    	userList.add(user);
+    }
+    myService = MyService.create(vertx,userList);
     //TODO add some test initialization code like security token retrieval
   }
 
