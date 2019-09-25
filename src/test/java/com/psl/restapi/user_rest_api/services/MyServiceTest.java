@@ -99,7 +99,7 @@ public class MyServiceTest {
     User body;
 
     // TODO set parameters for 200 response test
-    body = null;
+    body = new User(201,"Test case 1");
     myService.createUser(body, new OperationRequest(), ar -> {
       if (ar.succeeded()) {
         OperationResponse result = ar.result();
@@ -112,7 +112,7 @@ public class MyServiceTest {
     });
 
     // TODO set parameters for 500 response test
-    body = null;
+    body = new User(201,"Test case 1");;
     myService.createUser(body, new OperationRequest(), ar -> {
       if (ar.succeeded()) {
         OperationResponse result = ar.result();
@@ -125,7 +125,7 @@ public class MyServiceTest {
     });
 
     // TODO set parameters for 501 response test
-    body = null;
+    body = new User(201,"Test case 1");
     myService.createUser(body, new OperationRequest(), ar -> {
       if (ar.succeeded()) {
         OperationResponse result = ar.result();
@@ -144,7 +144,7 @@ public class MyServiceTest {
     Integer userId;
 
     // TODO set parameters for 200 response test
-    userId = null;
+    userId = 201;
     myService.getUser(userId, new OperationRequest(), ar -> {
       if (ar.succeeded()) {
         OperationResponse result = ar.result();
@@ -157,7 +157,7 @@ public class MyServiceTest {
     });
 
     // TODO set parameters for 500 response test
-    userId = null;
+    userId = 201;
     myService.getUser(userId, new OperationRequest(), ar -> {
       if (ar.succeeded()) {
         OperationResponse result = ar.result();
@@ -170,7 +170,7 @@ public class MyServiceTest {
     });
 
     // TODO set parameters for 501 response test
-    userId = null;
+    userId = 201;
     myService.getUser(userId, new OperationRequest(), ar -> {
       if (ar.succeeded()) {
         OperationResponse result = ar.result();
@@ -190,8 +190,8 @@ public class MyServiceTest {
     User body;
 
     // TODO set parameters for 200 response test
-    userId = null;
-    body = null;
+    userId = 201;
+    body = new User(201,"Test case 2");
     myService.updateUser(userId, body, new OperationRequest(), ar -> {
       if (ar.succeeded()) {
         OperationResponse result = ar.result();
@@ -204,8 +204,8 @@ public class MyServiceTest {
     });
 
     // TODO set parameters for 500 response test
-    userId = null;
-    body = null;
+    userId = 201;
+    body = new User(201,"Test case 2");
     myService.updateUser(userId, body, new OperationRequest(), ar -> {
       if (ar.succeeded()) {
         OperationResponse result = ar.result();
@@ -237,7 +237,7 @@ public class MyServiceTest {
     });
 
     // TODO set parameters for 500 response test
-    userId = null;
+    userId = 201;
     myService.deleteUsee(userId, new OperationRequest(), ar -> {
       if (ar.succeeded()) {
         OperationResponse result = ar.result();

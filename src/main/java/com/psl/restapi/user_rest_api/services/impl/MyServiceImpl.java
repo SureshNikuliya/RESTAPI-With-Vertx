@@ -28,6 +28,8 @@ public class MyServiceImpl implements MyService {
   @Override
   public void getUsersList(
     OperationRequest context, Handler<AsyncResult<OperationResponse>> resultHandler){
+	  System.out.println("In get");
+	  System.out.println(context.toJson());
 	  JsonArray userArray = new JsonArray();
 	  for(User user: userList)
 	  {
@@ -42,14 +44,14 @@ public class MyServiceImpl implements MyService {
   public void createUser(
     User body,
     OperationRequest context, Handler<AsyncResult<OperationResponse>> resultHandler){
-	  
+	  System.out.println("Create User");
+	  System.out.println(context.toJson());
 	  boolean flag = false;
 	  for(User user :userList)
 	  {
 		  if(user.getId().equals(body.getId()))
 		  {
 			  flag = true;
-			  break;
 		  }			  
 	  }
 	 if(flag)
@@ -91,10 +93,12 @@ public class MyServiceImpl implements MyService {
     User body,
     OperationRequest context, Handler<AsyncResult<OperationResponse>> resultHandler){
 	  boolean flag = false;
+	  
 	  for(User user :userList)
 	  {
 		  if(user.getId().equals(userId))
 		  {
+			  
 			  user.setId(body.getId());
 			  user.setName(body.getName());
 			  resultHandler.handle(Future.succeededFuture(new OperationResponse().setStatusMessage("User Updated Successfully!!")));
@@ -102,9 +106,9 @@ public class MyServiceImpl implements MyService {
 		  }			  
 	  }
 	  if(!flag)
-		 {
-			 resultHandler.handle(Future.succeededFuture(new OperationResponse().setStatusMessage("User with ID : "+userId + " not Found!!")));
-		 }
+	  {
+		  resultHandler.handle(Future.succeededFuture(new OperationResponse().setStatusMessage("User with ID : "+userId + " not Found!!")));
+	  }
     
   }
 

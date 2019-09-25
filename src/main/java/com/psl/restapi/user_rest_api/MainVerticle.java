@@ -50,6 +50,7 @@ public class MainVerticle extends AbstractVerticle {
   private void startServices() {
     this.serviceBinder = new ServiceBinder(vertx);
     this.registeredConsumers = new ArrayList<>();
+    System.out.println("In services start");
 
     
     List<User> userList = new ArrayList<User>();
@@ -91,6 +92,7 @@ public class MainVerticle extends AbstractVerticle {
         // Generate the router
         Router router = routerFactory.getRouter();
         server = vertx.createHttpServer(new HttpServerOptions().setPort(8080).setHost("10.244.32.121"));
+       // System.out.println(server.listen().toString());
         server.requestHandler(router).listen();
         
         future.complete();
@@ -104,6 +106,7 @@ public class MainVerticle extends AbstractVerticle {
 
   @Override
   public void start(Future<Void> future) {
+	  System.out.println("In Start Server");
     startServices();
     startHttpServer().setHandler(future.completer());
   }
@@ -113,6 +116,7 @@ public class MainVerticle extends AbstractVerticle {
    */
   @Override
   public void stop(){
+	  System.out.println("In stop server");
     this.server.close();
     registeredConsumers.forEach(c -> serviceBinder.unregister(c));
   }
